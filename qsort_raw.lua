@@ -48,7 +48,7 @@ function auxsort( t , l , u , comp )
        b = t[ u ]
        if sort_comp( b , a , comp ) then -- a[u]<a[i] ?
           set2( t , i , u , b , a )
-       else
+       else 
        	 a , b = nil , nil ; -- lua_pop(L, 2);
        end
     end
