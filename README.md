@@ -30,7 +30,7 @@ Ratio 1.5 means Lua pure sort runs 1.5 times faster than Built-in sort.
 
 JIT ON:
 
-| Table Lenght  | Lua pure sort | Built-in sort | Ratio |
+| Table Length  | Lua pure sort | Built-in sort | Ratio |
 | ------------- | ------------- |:-------------:| -----:|
 | 1000          | 0.000000 secs | 0.000000 secs | NaN   |
 | 200000 (2e5)  | 0.016000 secs | 0.082000 secs | 5.125 |
@@ -39,7 +39,7 @@ JIT ON:
 
 JIT OFF:
 
-| Table Lenght  | Lua pure sort | Built-in sort | Ratio |
+| Table Length  | Lua pure sort | Built-in sort | Ratio |
 | ------------- | ------------- |:-------------:| -----:|
 | 1000          | 0.000000 secs | 0.000000 secs | NaN   |
 | 200000 (2e5)  | 0.138000 secs | 0.100000 secs | 0.724 |
