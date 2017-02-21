@@ -96,7 +96,7 @@ function auxsort( t , l , u , sort_comp )
 
     if ( i - l ) < ( u - i ) then
       j = l ;
-      i = i - 1 ;
+      i = i - 1 ; 
       l = i + 2 ;
     else
       j = i + 1 ;
