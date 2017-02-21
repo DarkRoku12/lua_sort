@@ -9,9 +9,9 @@ end
 
 local function sort_comp( a , b , comp )
 
-	if comp then
-      return comp( a , b )
-	end
+   if comp then
+       return comp( a , b )
+   end
 
    return a < b ;
 end
@@ -20,9 +20,9 @@ local auxsort ;
 
 function auxsort( t , l , u , comp )
 
-	while l < u do
+  while l < u do
 
-	 local i , j ; -- /* for tail recursion */
+	  local i , j ; -- /* for tail recursion */
 
     -- sort elements a[l], a[(l+u)/2] and a[u]
     local a = t[ l ] -- lua_rawgeti(L, 1, l);
