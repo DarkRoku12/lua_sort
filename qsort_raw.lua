@@ -123,12 +123,11 @@ end
 -- sort function.
 return function( t , comp )
 
-	assert( type( t ) == "table" )
+    assert( type( t ) == "table" )
 
-	if comp then
-      assert( type( comp ) == "function" )
-	end
+    if comp then
+       assert( type( comp ) == "function" )
+    end
 
-	auxsort( t , 1 , #t , comp )
-
+    auxsort( t , 1 , #t , comp )
 end
