@@ -15,9 +15,7 @@ local auxsort ;
 
 function auxsort( t , l , u , sort_comp )
 
-	while l < u do --
-
-	--  local i , j ; -- /* for tail recursion */
+   while l < u do --
 
     -- sort elements a[l], a[(l+u)/2] and a[u]
 
