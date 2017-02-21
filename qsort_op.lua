@@ -15,11 +15,11 @@ local auxsort ;
 
 function auxsort( t , l , u , sort_comp )
 
-   while l < u do --
+   while l < u do 
 
     -- sort elements a[l], a[(l+u)/2] and a[u]
 
-	 do
+    do
 	    local a = t[ l ] -- lua_rawgeti(L, 1, l);
 	    local b = t[ u ] -- lua_rawgeti(L, 1, u);
 
@@ -87,7 +87,7 @@ function auxsort( t , l , u , sort_comp )
       end
 
       set2( t , i , j , b , a )
-    end -- End for.
+    end -- End while(true)
 
 	 t[ u - 1 ] , t[ i ] = t[ i ] , t[ u - 1 ] ;
 
@@ -106,8 +106,8 @@ function auxsort( t , l , u , sort_comp )
 
      auxsort( t , j , i , sort_comp ) ;  -- call recursively the smaller one */
 
-	end
-	-- end of while
+  end
+   -- end of while
    -- repeat the routine for the larger one
 
 end
