@@ -41,14 +41,19 @@ static void auxsort(lua_State *L, int l, int u)
     /* sort elements a[l], a[(l+u)/2] and a[u] */
     lua_rawgeti(L, 1, l);
     lua_rawgeti(L, 1, u);
+    
     if (sort_comp(L, -1, -2))  /* a[u] < a[l]? */
-      set2(L, l, u);  /* swap a[l] - a[u] */
+        set2(L, l, u);  /* swap a[l] - a[u] */
     else
-      lua_pop(L, 2);
+        lua_pop(L, 2);
+    
     if (u-l == 1) break;  /* only 2 elements */
-    i = (l+u)/2;
+    
+    i = ( l + u ) / 2 ;
+    
     lua_rawgeti(L, 1, i);
     lua_rawgeti(L, 1, l);
+    
     if (sort_comp(L, -2, -1)) 
     {  /* a[i]<a[l]? */
       set2(L, i, l);
@@ -58,40 +63,47 @@ static void auxsort(lua_State *L, int l, int u)
       lua_pop(L, 1);  /* remove a[l] */
       lua_rawgeti(L, 1, u);
       if (sort_comp(L, -1, -2))  /* a[u]<a[i]? */
-	set2(L, i, u);
+        set2(L, i, u);
       else
-	lua_pop(L, 2);
+        lua_pop(L, 2);
     }
+    
     if (u-l == 2) break;  /* only 3 elements */
+    
     lua_rawgeti(L, 1, i);  /* Pivot */
     lua_pushvalue(L, -1);
     lua_rawgeti(L, 1, u-1);
     set2(L, i, u-1);
+    
     /* a[l] <= P == a[u-1] <= a[u], only need to sort from l+1 to u-2 */
     i = l; j = u-1;
+    
     for (;;) 
     {  /* invariant: a[l..i] <= P <= a[j..u] */
       /* repeat ++i until a[i] >= P */
       while (lua_rawgeti(L, 1, ++i), sort_comp(L, -1, -2)) 
       {
-	if (i>=u) lj_err_caller(L, LJ_ERR_TABSORT);
-	lua_pop(L, 1);  /* remove a[i] */
+        if (i>=u) lj_err_caller(L, LJ_ERR_TABSORT);
+        lua_pop(L, 1);  /* remove a[i] */
       }
       /* repeat --j until a[j] <= P */
       while (lua_rawgeti(L, 1, --j), sort_comp(L, -3, -1)) 
       {
-	if (j<=l) lj_err_caller(L, LJ_ERR_TABSORT);
-	lua_pop(L, 1);  /* remove a[j] */
+          if (j<=l) lj_err_caller(L, LJ_ERR_TABSORT);
+          lua_pop(L, 1);  /* remove a[j] */
       }
-      if (j<i) {
-	lua_pop(L, 3);  /* pop pivot, a[i], a[j] */
-	break;
+      if (j<i) 
+      {
+          lua_pop(L, 3);  /* pop pivot, a[i], a[j] */
+          break;
       }
       set2(L, i, j);
     }
+
     lua_rawgeti(L, 1, u-1);
     lua_rawgeti(L, 1, i);
     set2(L, u-1, i);  /* swap pivot (a[u-1]) with a[i] */
+    
     /* a[l..i-1] <= a[i] == P <= a[i+1..u] */
     /* adjust so that smaller half is in [j..i] and larger one in [l..u] */
     if (i-l < u-i) 
@@ -109,10 +121,14 @@ static void auxsort(lua_State *L, int l, int u)
 LJLIB_CF(table_sort)
 {
   GCtab *t = lj_lib_checktab(L, 1);
+  
   int32_t n = (int32_t)lj_tab_len(t);
+  
   lua_settop(L, 2);
+  
   if (!tvisnil(L->base+1))
-    lj_lib_checkfunc(L, 2);
+       lj_lib_checkfunc(L, 2);
+
   auxsort(L, 1, n);
   return 0;
 }

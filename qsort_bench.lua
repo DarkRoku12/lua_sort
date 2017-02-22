@@ -5,48 +5,48 @@ local qsort = require "qsort_op"
 
 local function newBench()
    return
-	{
-	  prev = os.clock() ,
-	  get = function( self , msg )
-		  self.prev = os.clock() - self.prev ;
+   {
+     prev = os.clock() ,
+     get = function( self , msg )
+        self.prev = os.clock() - self.prev ;
         print( ("%s done in: %f seconds"):format( msg or "" , self.prev ) )
-		  self.prev = os.clock()
-	  end
-	}
+        self.prev = os.clock()
+     end
+   }
 end
 
 local function doBench( iterations )
 
-	print( ("Table lenght: %d"):format( iterations ) )
+   print( ("Table lenght: %d"):format( iterations ) )
 
-	local A , B , C , D = {} , {} , {} , {} ;
+   local A , B , C , D = {} , {} , {} , {} ;
 
-	for i = 1 , iterations do
-	   A[ i ] = math.random( 1 , 100 )
-	   B[ i ] = A[ i ]
-	   C[ i ] = A[ i ]
-	   D[ i ] = A[ i ]
-	end
+   for i = 1 , iterations do
+      A[ i ] = math.random( 1 , 100 )
+      B[ i ] = A[ i ]
+      C[ i ] = A[ i ]
+      D[ i ] = A[ i ]
+   end
 
-	local bench = newBench()
+   local bench = newBench()
 
-	qsort( A )
+   qsort( A )
 
-	bench:get( "JIT sort - Test #1" )
+   bench:get( "JIT sort - Test #1" )
 
-	qsort( B )
+   qsort( B )
 
-	bench:get( "JIT sort - Test #2" )
+   bench:get( "JIT sort - Test #2" )
 
-	table.sort( C )
+   table.sort( C )
 
-	bench:get( "Built-in sort - Test #1" )
+   bench:get( "Built-in sort - Test #1" )
 
-	table.sort( D )
+   table.sort( D )
 
-	bench:get( "Built-in sort - Test #2" )
+   bench:get( "Built-in sort - Test #2" )
 
-	collectgarbage()
+   collectgarbage()
 
 end
 

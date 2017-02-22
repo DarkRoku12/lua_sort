@@ -2,7 +2,7 @@
 local qsort = require "qsort_op"
 
 local function debug( t )
-	print( table.concat( t , " " ) )
+   print( table.concat( t , " " ) )
 end
 
 local test1 = { 8 , 7 , 6 , 9 , -10 , 15 , 5 , 12 , 6 }
@@ -34,7 +34,7 @@ qsort( test2 )
 
 debug( test2 )
 
-print( "Test #3: (Callback) " )
+print( "Test #3: (Callback)" )
 
 qsort( test3 , function( a , b ) return a.k < b.k end )
 
