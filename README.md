@@ -1,7 +1,5 @@
 # lua_sort
 
-~Sorry for the indentation, github messed it a bit.~
-
 Lua pure sort algorithm based on lib_table.c (from LuaJIT 2.1.0)
 
 lib_table_sort.c -> table.sort algorithm built-in in LuaJIT.
