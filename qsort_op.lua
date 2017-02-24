@@ -1,4 +1,4 @@
-
+-- Copyright (C) 2017 - DarkRoku12
 -- Optimized version.
 
 -- Stack slot #1 = t.
