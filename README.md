@@ -1,4 +1,6 @@
-# lua_sort
+# lua_sort 
+
+-- Copyright (C) 2017 - DarkRoku12
 
 Lua pure sort algorithm based on lib_table.c (from LuaJIT 2.1.0)
 
