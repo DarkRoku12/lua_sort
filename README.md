@@ -18,14 +18,13 @@ test_all.lua -> Runs the check test and the benchmark test.
 
 results.txt -> Results of running test_all.lua
 
-
 Resume of results.txt: 
 
 Tested on:
 Windows 10 64-bits.
 Intel Core I7-4500U (4M Cache, up to 3.00 GHz)
 8 GB RAM 
-LuaJIT 2.0.1 Beta ( 32-Bits )
+LuaJIT 2.1.0 Beta ( 32-Bits )
 
 Notes: 
 Only the lowest times are shown here.
